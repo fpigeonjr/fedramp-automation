@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml-model href="rules.xsd" schematypens="http://www.w3.org/2001/XMLSchema" title="FedRAMP Automation business rule schema"?>-->
+<!-- Business rules based off analysis of "GUIDE TO OSCAL BASED FEDRAMP SECURITY ASSESSMENT PLANS (SAP)". 
+     Fedramp1.2.1-oscal1.0.0
+     October 22, 2021 
+     MDS 2022-02-07 -->
+<business-rules
+    xmlns:doc="https://fedramp.gov/oscal/fedramp-automation-documentation"
+    xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+    <rule
+        doc:guide-reference="Guide to OSCAL-based FedRAMP Content §1.6"
+        doc:href="https://www.w3.org/TR/xml/#sec-well-formed">
+        <statement>A FedRAMP OSCAL XML SAP submission must be well-formed.</statement>
+    </rule>
+    <rule
+        doc:guide-reference="Guide to OSCAL-based FedRAMP Content §1.6.1"
+        doc:href="https://github.com/usnistgov/OSCAL/tree/main/xml/schema">
+        <statement>A FedRAMP OSCAL XML SAP submission must be syntactically valid relative to the OSCAL XML Schema.</statement>
+    </rule>
+    <rule
+        assertions="imports-system-security-plan"
+        doc:checklist-reference="???Section C Check 1.a"
+        doc:guide-reference="Guide to OSCAL-based FedRAMP Security Assessment Plans §3.5"
+        doc:template-reference="???System Security Plan Template §2.2"
+        sch:pattern="has-imported-system-security-plan">
+        <statement>The FedRAMP System Security Plan must be referenced either as an OSCAL document or a backmatter resource.</statement>
+    </rule>
+    <rule
+        assertions="does-not-have-oscal-system-security-plan"
+        doc:checklist-reference=""
+        doc:guide-reference="Guide to OSCAL-based FedRAMP Security Assessment Plans §3.5.2"
+        doc:template-reference=""
+        sch:pattern="no-imported-system-security-plan">
+        <statement>If no OSCAL-based FedRAMP System Security Plan exists, no-oscal-ssp must be defined and the location of non-OSCAL SSP artifacts specified.</statement>
+    </rule>    
+    <!-- SAP Guide §4 -->
+    <rule
+        assertions="all-controls-implemented-from-profile"
+        doc:checklist-reference=""
+        doc:guide-reference="Guide to OSCAL-based FedRAMP Security Assesment Plans §4.1"
+        sch:pattern="controls-from-profile">
+        <statement>A FedRAMP SAP must implement all controls specified in the associated FedRAMP Profile.</statement>
+    </rule>  
+    <rule
+        assertions="has-system-name"
+        doc:guide-reference="Guide to OSCAL-based FedRAMP Security Assesment Plans §4.2"
+        doc:template-reference=""
+        sch:pattern="has-system-name">
+        <statement>If no OSCAL-based FedRAMP SSP exists or the SSP has inaccurate information, a FedRAMP SAP must have a system name or title. Otherwise the linked FedRAMP SSP must have a system name or title.</statement>
+    </rule>
+    <rule
+        assertions="has-location-of-components"
+        doc:guide-reference="Guide to OSCAL-based FedRAMP Security Assesment Plans §4.3"
+        doc:template-reference=""
+        sch:pattern="location-of-components">
+        <statement>If no OSCAL-based FedRAMP SSP exists or the SSP has inaccurate information, a FedRAMP SAP must have location information of the components. Otherwise the linked FedRAMP SSP must have location information of the components.</statement>
+    </rule>
+    <rule
+        assertions="has-IP-addresses-for-testing"
+        doc:guide-reference="Guide to OSCAL-based FedRAMP Security Assesment Plans §4.4"
+        doc:template-reference=""
+        sch:pattern="IP-addresses-for-testing">
+        <statement>If no OSCAL-based FedRAMP SSP exists or the SSP has inaccurate information, a FedRAMP SAP must have locally defined IP addresses for testing. Otherwise the linked FedRAMP SSP must have the IP addresses for testing.</statement>
+    </rule>
+    <rule
+        assertions="has-web-applications-for-testing"
+        doc:guide-reference="Guide to OSCAL-based FedRAMP Security Assesment Plans §4.5"
+        doc:template-reference=""
+        sch:pattern="web-applications-to-be-tested">
+        <statement>Every web interface to be tested, whether identified in the SSP or identified in the Assessment must be included in the FedRAMP SAP.</statement>
+    </rule>
+    <rule
+        assertions="has-databases-for-testing"
+        doc:guide-reference="Guide to OSCAL-based FedRAMP Security Assesment Plans §4.6"
+        doc:template-reference=""
+        sch:pattern="databases-to-be-tested">
+        <statement>Every database to be tested, whether identified in the SSP or identified in the Assessment must be included in the FedRAMP SAP.</statement>
+    </rule>
+    <rule
+        assertions="has-user-information"
+        doc:guide-reference="Guide to OSCAL-based FedRAMP Security Assesment Plans §4.7"
+        doc:template-reference=""
+        sch:pattern="user-information">
+        <statement>If no OSCAL-based FedRAMP SSP exists or the SSP has inaccurate information, a FedRAMP SAP must have user information. Otherwise the linked FedRAMP SSP must have the user information.</statement>
+    </rule>
+    <rule
+        assertions="has-assumptions"
+        doc:guide-reference="Guide to OSCAL-based FedRAMP Security Assesment Plans §4.8"
+        doc:template-reference=""
+        sch:pattern="assumptions">
+        <statement>FedRAMP SAP must have assumptions defined.</statement>
+    </rule>
+    <rule
+        assertions="has-methodology"
+        doc:guide-reference="Guide to OSCAL-based FedRAMP Security Assesment Plans §4.9"
+        doc:template-reference=""
+        sch:pattern="methodology">
+        <statement>FedRAMP SAP must have methodology explained.</statement>
+    </rule>
+    <rule
+        assertions="has-test-plan-assessor-information"
+        doc:guide-reference="Guide to OSCAL-based FedRAMP Security Assesment Plans §4.10"
+        doc:template-reference=""
+        sch:pattern="assessor">
+        <statement>If no OSCAL-based FedRAMP SSP exists or the SSP has inaccurate information, a FedRAMP SAP must contain assessor information.  Otherwise the linked FedRAMP SSP must have the assessor information.</statement>
+    </rule>
+    <rule
+        assertions="has-test-plan-asesment-team-information"
+        doc:guide-reference="Guide to OSCAL-based FedRAMP Security Assesment Plans §4.11"
+        doc:template-reference=""
+        sch:pattern="assessment-team">
+        <statement>If no OSCAL-based FedRAMP SSP exists or the SSP has inaccurate information, a FedRAMP SAP must contain assessment team information.  Otherwise the linked FedRAMP SSP must have the assessment team information.</statement>
+    </rule>
+    <rule
+        assertions="has-test-plan-CSP-POC-information"
+        doc:guide-reference="Guide to OSCAL-based FedRAMP Security Assesment Plans §4.12"
+        doc:template-reference=""
+        sch:pattern="CSP-POC">
+        <statement>If no OSCAL-based FedRAMP SSP exists or the SSP has inaccurate information, a FedRAMP SAP must contain the Cloud Service Provider's Point Of Contact information.  Otherwise the linked FedRAMP SSP must have the CSP's POC information.</statement>
+    </rule>
+    <rule
+        assertions="has-automated-tools-for-testing"
+        doc:guide-reference="Guide to OSCAL-based FedRAMP Security Assesment Plans §4.13"
+        doc:template-reference=""
+        sch:pattern="automated-tools-for-testing">
+        <statement>FedRAMP SAP must list and describe all automated tools for testing.</statement>
+    </rule>
+    <rule
+        assertions="has-manual-methods-for-testing"
+        doc:guide-reference="Guide to OSCAL-based FedRAMP Security Assesment Plans §4.14"
+        doc:template-reference=""
+        sch:pattern="manual-methods-for-testing">
+        <statement>FedRAMP SAP must list and describe all manual methods for testing.</statement>
+    </rule>
+    <rule
+        assertions="has-test-plan-schedule"
+        doc:guide-reference="Guide to OSCAL-based FedRAMP Security Assesment Plans §4.15"
+        doc:template-reference=""
+        sch:pattern="test-plan-schedule">
+        <statement>FedRAMP SAP must provide the schedule for the test plan.</statement>
+    </rule>
+    <rule
+        assertions="has-ROE-origination-addresses"
+        doc:guide-reference="Guide to OSCAL-based FedRAMP Security Assesment Plans §4.16"
+        doc:template-reference=""
+        sch:pattern="ROE-origination-addresses">
+        <statement>FedRAMP SAP must provide the origination addresses.</statement>
+    </rule>
+    <rule
+        assertions="has-ROE-disclosures"
+        doc:guide-reference="Guide to OSCAL-based FedRAMP Security Assesment Plans §4.17"
+        doc:template-reference=""
+        sch:pattern="ROE-disclosures">
+        <statement>FedRAMP SAP must provide any disclosure statements.</statement>
+    </rule>
+    <rule
+        assertions="has-ROE-security-testing-include"
+        doc:guide-reference="Guide to OSCAL-based FedRAMP Security Assesment Plans §4.18"
+        doc:template-reference=""
+        sch:pattern="ROE-security-testing-include">
+        <statement>FedRAMP SAP must provide any security testing activities that may be used.</statement>
+    </rule>
+    <rule
+        assertions="has-ROE-security-testing-exclude"
+        doc:guide-reference="Guide to OSCAL-based FedRAMP Security Assesment Plans §4.19"
+        doc:template-reference=""
+        sch:pattern="ROE-security-testing-exclude">
+        <statement>FedRAMP SAP must provide any security testing activities that will not be used.</statement>
+    </rule>
+    <rule
+        assertions="has-ROE-end-of-testing-notification"
+        doc:guide-reference="Guide to OSCAL-based FedRAMP Security Assesment Plans §4.20"
+        doc:template-reference=""
+        sch:pattern="ROE-end-of-testing-notification">
+        <statement>FedRAMP SAP must indicate who the 3PAO will notify when testing is complete..</statement>
+    </rule>
+    <rule
+        assertions="has-ROE-define-role-of-assessment-results-recipients"
+        doc:guide-reference="Guide to OSCAL-based FedRAMP Security Assesment Plans §4.21"
+        doc:template-reference=""
+        sch:pattern="ROE-define-role-of-assessment-results-recipients">
+        <statement>FedRAMP SAP must provide name, role, and contact information of person to receive the assessment plan.</statement>
+    </rule>
+    <rule
+        assertions="has-ROE-limitations-of-liability"
+        doc:guide-reference="Guide to OSCAL-based FedRAMP Security Assesment Plans §4.22"
+        doc:template-reference=""
+        sch:pattern="ROE-limitations-of-liability">
+        <statement>FedRAMP SAP must define all limitations of liability statements.</statement>
+    </rule>
+    <rule
+        assertions="has-ROE-signatures"
+        doc:guide-reference="Guide to OSCAL-based FedRAMP Security Assesment Plans §4.23"
+        doc:template-reference=""
+        sch:pattern="ROE-signatures">
+        <statement>FedRAMP SAP must provide signatures of the individuals who have authority to agree to testing.</statement>
+    </rule>
+    <rule
+        assertions="has-test-case-procedures"
+        doc:guide-reference="Guide to OSCAL-based FedRAMP Security Assesment Plans §4.24"
+        doc:template-reference=""
+        sch:pattern="test-case-procedures">
+        <statement>FedRAMP SAP must be able to render Test Case Workbook objectives and actions.</statement>
+    </rule>
+    <rule
+        assertions="has-baseline-ojectives-and-measures"
+        doc:guide-reference="Guide to OSCAL-based FedRAMP Security Assesment Plans §4.24.1"
+        doc:template-reference=""
+        sch:pattern="baseline-ojectives-and-measures">
+        <statement>FedRAMP SAP must include objectives and associated actions that are designatated as in scope.</statement>
+    </rule>
+    <rule
+        assertions="has-attachments"
+        doc:guide-reference="Guide to OSCAL-based FedRAMP Security Assesment Plans §4.25"
+        doc:template-reference=""
+        sch:pattern="attachments">
+        <statement>FedRAMP SAP must list the attachments.  These may be modeled in OSCAL or at non-OSCAL attachments.</statement>
+    </rule>
+    <rule
+        assertions="has-penetration-testing-attachment"
+        doc:guide-reference="Guide to OSCAL-based FedRAMP Security Assesment Plans §4.26"
+        doc:template-reference=""
+        sch:pattern="pen-attachment">
+        <statement>FedRAMP SAP must list and link to the penetration testing plan as a seperate attachment.</statement>
+    </rule>
+    <rule
+        assertions="has-penetration-testing-attachment"
+        doc:guide-reference="Guide to OSCAL-based FedRAMP Security Assesment Plans §4.26"
+        doc:template-reference=""
+        sch:pattern="pen-attachment">
+        <statement>FedRAMP SAP must list and link to the penetration testing plan as a seperate attachment.</statement>
+    </rule>
+    <!-- SSP Guide §4 -->
+    <!-- This section needs to be expanded.  Review of SSP that matches SAP content is required. -->
+    <rule
+        assertions="has-system-id"
+        doc:guide-reference="Guide to OSCAL-based FedRAMP System Security Plans §4.1"
+        doc:template-reference="System Security Plan Template §1"
+        sch:pattern="basic-system-characteristics">
+        <statement>If no OSCAL-based FedRAMP SSP exists, a FedRAMP SAP must have a FedRAMP system identifier. Otherwise the linked FedRAMP SSP must have a FedRAMP system identifier.</statement>
+    </rule>
+    <rule
+        assertions="has-system-name"
+        doc:guide-reference="Guide to OSCAL-based FedRAMP System Security Plans §4.1"
+        doc:template-reference="System Security Plan Template §1"
+        sch:pattern="basic-system-characteristics">
+        <statement>If no OSCAL-based FedRAMP SSP exists, a FedRAMP SAP must have a system name. Otherwise the linked FedRAMP SSP must have a system name.</statement>
+    </rule>
+    <rule
+        assertions="has-system-name-short"
+        doc:guide-reference="Guide to OSCAL-based FedRAMP System Security Plans §4.1"
+        doc:template-reference="System Security Plan Template §1"
+        sch:pattern="basic-system-characteristics">
+        <statement>If no OSCAL-based FedRAMP SSP exists, a FedRAMP SAP must have a short system name. Otherwise the linked FedRAMP SSP must have a short system name.</statement>
+    </rule>
+    <rule
+        assertions="no-security-sensitivity-level"
+        doc:checklist-reference="Section C Check 1.a"
+        doc:guide-reference="Guide to OSCAL-based FedRAMP System Security Plans §4.2"
+        doc:template-reference="System Security Plan Template §2.2"
+        sch:pattern="basic-system-characteristics">
+        <statement>If no OSCAL-based FedRAMP SSP exists, a FedRAMP SAP must define its sensitivity level. Otherwise the linked FedRAMP SSP must define its sensitivity level.</statement>
+    </rule>
+    <rule
+        assertions="invalid-security-sensitivity-level"
+        doc:checklist-reference="Section C Check 1.a"
+        doc:guide-reference="Guide to OSCAL-based FedRAMP System Security Plans §4.2"
+        doc:template-reference="System Security Plan Template §2.2"
+        sch:pattern="basic-system-characteristics">
+        <statement>If no OSCAL-based FedRAMP SSP exists, a FedRAMP SAP must have an allowed sensitivity level. Otherwise the linked FedRAMP SSP must have an allowed sensitivity level.</statement>
+    </rule>
+    <rule
+        assertions="has-fedramp-authorization-type"
+        doc:guide-reference="Guide to OSCAL-based FedRAMP System Security Plans §4.2"
+        sch:pattern="basic-system-characteristics">
+        <statement>If no OSCAL-based FedRAMP SSP exists, a FedRAMP SSP must have an allowed FedRAMP authorization type. Otherwise the linked FedRAMP SSP must have an allowed FedRAMP authorization type.</statement>
+    </rule>
+    <!-- Content Guide §4 -->
+    <rule
+        assertions="has-fedramp-logo"
+        doc:guide-reference="Guide to OSCAL-based FedRAMP Content §4.1"
+        sch:pattern="specific-attachments">
+        <statement>A FedRAMP OSCAL SAP must have the FedRAMP Logo attached.</statement>
+    </rule>
+</business-rules>
