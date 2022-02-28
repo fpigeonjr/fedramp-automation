@@ -3810,7 +3810,7 @@
             <sch:value-of
                 select="local-name()" />
             <sch:value-of
-                select="@control-id" /> lacks policy reference(s) via legacy or component approach.</sch:diagnostic>
+                select="@control-id" /><xsl:text> lacks policy reference(s) via legacy or component approach.</xsl:text></sch:diagnostic>
         <sch:diagnostic
             doc:assertion="has-policy-attachment-resource"
             doc:context="oscal:implemented-requirement[matches(@control-id, '^[a-z]{2}-1$')]"
