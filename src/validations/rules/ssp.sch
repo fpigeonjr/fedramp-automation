@@ -3824,7 +3824,9 @@
             doc:assertion="has-procedure-link"
             doc:context="oscal:implemented-requirement[matches(@control-id, '^[a-z]{2}-1$')]"
             id="has-procedure-link-diagnostic">
-            <sch:value-of select="local-name()" /> <sch:value-of select="@control-id" /> lacks procedure reference(s) via legacy or component approach.</sch:diagnostic>
+            implemented-requirement 
+            <sch:value-of
+                select="@control-id" /> lacks procedure reference(s) via legacy or component approach.</sch:diagnostic>
         <sch:diagnostic
             doc:assertion="has-procedure-attachment-resource"
             doc:context="oscal:implemented-requirement[matches(@control-id, '^[a-z]{2}-1$')]"
