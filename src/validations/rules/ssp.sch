@@ -1155,7 +1155,7 @@
                     (: component approach :)
                     (some $c in
                     //oscal:component[@uuid = current()/descendant::oscal:by-component/@component-uuid]
-                        satisfies $c/@type = 'procedure' and $c/oscal:link[@rel eq 'procedure'])">[Section B Check 3.1] A FedRAMP SSP
+                        satisfies $c/@type = 'procedure' and $c/oscal:link[@rel eq 'procedure'])">[Section B Check 3.1aaa] A FedRAMP SSP
                 must incorporate a procedure document for each of the 17 NIST SP 800-54 Revision 4 control families.</sch:assert>
             <sch:let
                 name="procedure-hrefs"
