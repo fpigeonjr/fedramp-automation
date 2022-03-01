@@ -3809,9 +3809,8 @@
             id="has-policy-link-diagnostic">
             <sch:value-of
                 select="local-name()" />
-            <xsl:text>&#32;</xsl:text>
             <sch:value-of
-                select="@control-id" /> lacks policy123 reference(s) via legacy or component approach.</sch:diagnostic>
+                select="@control-id" /> lacks policy reference(s) via legacy or component approach.</sch:diagnostic>
         <sch:diagnostic
             doc:assertion="has-policy-attachment-resource"
             doc:context="oscal:implemented-requirement[matches(@control-id, '^[a-z]{2}-1$')]"
@@ -3827,6 +3826,7 @@
             id="has-procedure-link-diagnostic">
             <sch:value-of
                 select="local-name()" />
+            <xsl:text>&#32;</xsl:text>
             <sch:value-of
                 select="@control-id" /> lacks procedure reference(s) via legacy or component approach.</sch:diagnostic>
         <sch:diagnostic
