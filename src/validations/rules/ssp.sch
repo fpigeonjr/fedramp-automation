@@ -3833,7 +3833,6 @@
             id="has-procedure-attachment-resource-diagnostic">
             <sch:value-of
                 select="local-name()" />
-            <xsl:text>: </xsl:text>
             <sch:value-of
                 select="@control-id" /> lacks procedure attachment resource(s) <sch:value-of
                 select="string-join($procedure-hrefs, ', ')" />.</sch:diagnostic>
