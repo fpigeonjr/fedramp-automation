@@ -3806,17 +3806,13 @@
         <sch:diagnostic
             doc:assertion="has-policy-link"
             doc:context="oscal:implemented-requirement[matches(@control-id, '^[a-z]{2}-1$')]"
-            id="has-policy-link-diagnostic">
-            <sch:value-of
-                select="local-name()" />
+            id="has-policy-link-diagnostic">implemented-requirement 
             <sch:value-of
                 select="@control-id" /> lacks policy reference(s) via legacy or component approach.</sch:diagnostic>
         <sch:diagnostic
             doc:assertion="has-policy-attachment-resource"
             doc:context="oscal:implemented-requirement[matches(@control-id, '^[a-z]{2}-1$')]"
-            id="has-policy-attachment-resource-diagnostic">
-            <sch:value-of
-                select="local-name()" />
+            id="has-policy-attachment-resource-diagnostic">implemented-requirement 
             <sch:value-of
                 select="@control-id" /> lacks policy attachment resource(s) <sch:value-of
                 select="string-join($policy-hrefs, ', ')" />.</sch:diagnostic>
@@ -3824,17 +3820,13 @@
             doc:assertion="has-procedure-link"
             doc:context="oscal:implemented-requirement[matches(@control-id, '^[a-z]{2}-1$')]"
             id="has-procedure-link-diagnostic">
-            <sch:value-of
-                select="local-name()" />            
-            <xsl:text> - </xsl:text>
-            <sch:value-of
+            implemented-requirement 
+            <sch:value-of 
                 select="@control-id" /> lacks procedure reference(s) via legacy or component approach.</sch:diagnostic>
         <sch:diagnostic
             doc:assertion="has-procedure-attachment-resource"
             doc:context="oscal:implemented-requirement[matches(@control-id, '^[a-z]{2}-1$')]"
-            id="has-procedure-attachment-resource-diagnostic">
-            <sch:value-of
-                select="local-name()" />
+            id="has-procedure-attachment-resource-diagnostic">implemented-requirement 
             <sch:value-of
                 select="@control-id" /> lacks procedure attachment resource(s) <sch:value-of
                 select="string-join($procedure-hrefs, ', ')" />.</sch:diagnostic>
