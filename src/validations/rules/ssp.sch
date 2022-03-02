@@ -3828,7 +3828,7 @@
                 select="local-name()" />            
             <xsl:text> - </xsl:text>
             <sch:value-of
-                select="@control-id" /> lacks123 procedure reference(s) via legacy or component approach.</sch:diagnostic>
+                select="@control-id" /> lacks procedure reference(s) via legacy or component approach.</sch:diagnostic>
         <sch:diagnostic
             doc:assertion="has-procedure-attachment-resource"
             doc:context="oscal:implemented-requirement[matches(@control-id, '^[a-z]{2}-1$')]"
