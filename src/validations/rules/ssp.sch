@@ -3826,7 +3826,7 @@
             id="has-procedure-link-diagnostic">
             <sch:value-of
                 select="local-name()" />            
-            <xsl:text>&#32;</xsl:text>
+            <xsl:text> - </xsl:text>
             <sch:value-of
                 select="@control-id" /> lacks123 procedure reference(s) via legacy or component approach.</sch:diagnostic>
         <sch:diagnostic
