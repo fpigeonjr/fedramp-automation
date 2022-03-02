@@ -3834,7 +3834,7 @@
             <sch:value-of
                 select="local-name()" />
             <sch:value-of
-                select="@control-id" /> lacks procedure attachment resource(s) <sch:value-of
+                select="@control-id" /> lacks123 procedure attachment resource(s) <sch:value-of
                 select="string-join($procedure-hrefs, ', ')" />.</sch:diagnostic>
         <sch:diagnostic
             doc:assertion="has-unique-policy-and-procedure"
