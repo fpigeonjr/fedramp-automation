@@ -3817,7 +3817,6 @@
             id="has-policy-attachment-resource-diagnostic">
             <sch:value-of
                 select="local-name()" />
-            <xsl:text>&#32;</xsl:text>
             <sch:value-of
                 select="@control-id" /> lacks policy attachment resource(s) <sch:value-of
                 select="string-join($policy-hrefs, ', ')" />.</sch:diagnostic>
@@ -3826,7 +3825,8 @@
             doc:context="oscal:implemented-requirement[matches(@control-id, '^[a-z]{2}-1$')]"
             id="has-procedure-link-diagnostic">
             <sch:value-of
-                select="local-name()" />
+                select="local-name()" />            
+            <xsl:text>&#32;</xsl:text>
             <sch:value-of
                 select="@control-id" /> lacks123 procedure reference(s) via legacy or component approach.</sch:diagnostic>
         <sch:diagnostic
