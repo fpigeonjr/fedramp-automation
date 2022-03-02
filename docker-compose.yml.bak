@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  dev:
+    build: .
+    environment:
+      - SAXON_CP=/code/vendor/Saxon-HE-${version:-10.5}.jar
+      - TEST_DIR=/code/src/validations/report/test
+    volumes:
+      - .:/code
+      - /var/run/docker.sock:/var/run/docker.sock
+    working_dir: /code
