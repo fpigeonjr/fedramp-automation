@@ -642,6 +642,11 @@
                 test="count($results/errors/error) = 0">
                 <sch:value-of
                     select="$results => lv:report() => normalize-space()" />.</sch:report>
+            <sch:report
+                diagnostics="missing-system-comm-terms-diagnostic"
+                id="missing-system-comm-terms"
+                role="warning"
+                test="$implemented[@control-id eq 'sc-8' or @control-id eq 'sc8.1']"><xsl:value-of select="o:statement/@statment-id"/> - This is Here.</sch:report>
         </sch:rule>
         <sch:rule
             context="/o:system-security-plan/o:control-implementation/o:implemented-requirement">
@@ -3646,6 +3651,10 @@
                     else
                         ' controls'" /> overall: <sch:value-of
                 select="$all-missing/@id" />.</sch:diagnostic>
+        <sch:diagnostic
+            doc:assertion="missing-system-comm-terms"
+            doc:context="/o:system-security-plan/o:control-implementation"
+            id="missing-system-comm-terms-diagnostic"><xsl:value-of select="o:statement/@statement-id"/>.</sch:diagnostic>
         <sch:diagnostic
             doc:assertion="extraneous-implemented-requirements"
             doc:context="/o:system-security-plan/o:control-implementation"

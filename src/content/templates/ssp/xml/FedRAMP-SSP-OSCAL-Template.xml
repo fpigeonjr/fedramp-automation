@@ -2162,6 +2162,100 @@
             </by-component>
          </statement>
       </implemented-requirement>
+       
+       <implemented-requirement
+           control-id="sc-8"
+           uuid="5656125d-78e9-4fc3-b507-d05b85bf7294">
+           <!--Transmission Confidentiality and Integrity-->
+           <prop
+               name="control-origination"
+               ns="https://fedramp.gov/ns/oscal"
+               value="sp-system" />
+           <prop
+               name="implementation-status"
+               ns="https://fedramp.gov/ns/oscal"
+               value="planned">
+               <remarks>
+                   <p>A description of the plan to complete implementation.</p>
+               </remarks>
+           </prop>
+           <prop
+               name="planned-completion-date"
+               ns="https://fedramp.gov/ns/oscal"
+               value="2021-09-22Z" />
+           <!--There is 1 control parameter-->
+           <set-parameter
+               param-id="sc-8_prm_1">
+               <value>one-or-more of confidentiality, integrity</value>
+           </set-parameter>
+           <responsible-role
+               role-id="implemented-requirement-responsible-role" />
+           <statement statement-id="sc-8_smt" uuid="3f1307fa-7405-42ea-a9ad-61b7a94bc704">
+               <by-component component-uuid="60f92bcf-f353-4236-9803-2a5d417555f4"
+                   uuid="8c52b949-a7ad-4bef-9da2-b342cef3dc45">
+                   <description>
+                       <p>Describe how the control is satisfied within the system.</p>
+                       <p>CMVP and FIPS are employed.</p>
+                       <p>Communications are validated and Compliant.</p>
+                   </description>
+                   <set-parameter param-id="sc-8_prm_1">
+                       <value>[replace with list of personnel or roles]</value>
+                   </set-parameter>
+                   <set-parameter param-id="sc-8_prm_2">
+                       <value>[specify frequency]</value>
+                   </set-parameter>
+                   <set-parameter param-id="sc-8_prm_3">
+                       <value>[specify frequency]</value>
+                   </set-parameter>
+               </by-component>
+           </statement>
+           <!--Required response points are: -->
+       </implemented-requirement>
+       <implemented-requirement
+           control-id="sc-8.1"
+           uuid="00020c7d-44b8-4dca-811c-8c94ebc6c538">
+           <!--Cryptographic or Alternate Physical Protection-->
+           <prop
+               name="control-origination"
+               ns="https://fedramp.gov/ns/oscal"
+               value="sp-system" />
+           <prop
+               name="implementation-status"
+               ns="https://fedramp.gov/ns/oscal"
+               value="implemented" />
+           <!--There are no control parameters-->
+           <set-parameter
+               param-id="sc-8.1_prm_1">
+               <value>one-or-more of prevent unauthorized disclosure of information, detect changes to information</value>
+           </set-parameter>
+           <set-parameter
+               param-id="sc-8.1_prm_2">
+               <value>organization-defined alternative physical safeguards</value>
+           </set-parameter>
+           <responsible-role
+               role-id="implemented-requirement-responsible-role" />
+           <statement statement-id="sc-8.1_smt" uuid="3f1307fa-7405-42ea-a9ad-61b7a94bc704">
+               <by-component component-uuid="60f92bcf-f353-4236-9803-2a5d417555f4"
+                   uuid="8c52b949-a7ad-4bef-9da2-b342cef3dc45">
+                   <description>
+                       <p>Describe how the control is satisfied within the system.</p>
+                       <p>CMVP and FIPS are employed.</p>
+                       <p>Communications are validated and Compliant.</p>
+                   </description>
+                   <set-parameter param-id="sc-8.1_prm_1">
+                       <value>[replace with list of personnel or roles]</value>
+                   </set-parameter>
+                   <set-parameter param-id="sc-8.1_prm_2">
+                       <value>[specify frequency]</value>
+                   </set-parameter>
+                   <set-parameter param-id="sc-8.1_prm_3">
+                       <value>[specify frequency]</value>
+                   </set-parameter>
+               </by-component>
+           </statement>
+           <!--Required response points are: -->
+       </implemented-requirement>
+       
       <implemented-requirement control-id="si-1" uuid="81ba4fe8-1649-437b-9ecf-367fd87336e6">
          <prop ns="https://fedramp.gov/ns/oscal" name="planned-completion-date" value="2020-11-27Z"/>
          <prop ns="https://fedramp.gov/ns/oscal" name="implementation-status" value="planned">
