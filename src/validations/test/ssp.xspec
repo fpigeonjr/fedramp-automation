@@ -9924,6 +9924,122 @@
             </x:scenario>
         </x:scenario>
 
+        <x:scenario
+            label="sc-8, sc8-1, sc-13, sc-28, and sc-28.1 must contain either FIPS or CMVP and validated in the text content.">
+            <x:scenario
+                label="When that is true">
+                <x:context>
+                    <system-security-plan
+                        xmlns="http://csrc.nist.gov/ns/oscal/1.0">
+                        <control-implementation>
+                            <implemented-requirement
+                                control-id="sc-8.1"
+                                uuid="00020c7d-44b8-4dca-811c-8c94ebc6c538">
+                                <!--Cryptographic or Alternate Physical Protection-->
+                                <prop
+                                    name="control-origination"
+                                    ns="https://fedramp.gov/ns/oscal"
+                                    value="sp-system" />
+                                <prop
+                                    name="implementation-status"
+                                    ns="https://fedramp.gov/ns/oscal"
+                                    value="implemented" />
+                                <!--There are no control parameters-->
+                                <set-parameter
+                                    param-id="sc-8.1_prm_1">
+                                    <value>one-or-more of prevent unauthorized disclosure of information, detect changes to information</value>
+                                </set-parameter>
+                                <set-parameter
+                                    param-id="sc-8.1_prm_2">
+                                    <value>organization-defined alternative physical safeguards</value>
+                                </set-parameter>
+                                <responsible-role
+                                    role-id="implemented-requirement-responsible-role" />
+                                <statement statement-id="sc-8.1_smt" uuid="3f1307fa-7405-42ea-a9ad-61b7a94bc704">
+                                    <by-component component-uuid="60f92bcf-f353-4236-9803-2a5d417555f4"
+                                        uuid="8c52b949-a7ad-4bef-9da2-b342cef3dc45">
+                                        <description>
+                                            <p>Describe how the control is satisfied within the system.</p>
+                                            <p>CMVP is employed.</p>
+                                            <p>Comms are validated.</p>
+                                        </description>
+                                        <set-parameter param-id="sc-8.1_prm_1">
+                                            <value>[replace with list of personnel or roles]</value>
+                                        </set-parameter>
+                                        <set-parameter param-id="sc-8.1_prm_2">
+                                            <value>[specify frequency]</value>
+                                        </set-parameter>
+                                        <set-parameter param-id="sc-8.1_prm_3">
+                                            <value>[specify frequency]</value>
+                                        </set-parameter>
+                                    </by-component>
+                                </statement>
+                                <!--Required response points are: -->
+                            </implemented-requirement>
+                        </control-implementation>
+                    </system-security-plan>
+                </x:context>
+                <x:expect-not-assert
+                    id="missing-system-comm-terms"
+                    label="that is correct" />
+            </x:scenario>
+            <x:scenario
+                label="When that is false">
+                <x:context>
+                    <system-security-plan
+                        xmlns="http://csrc.nist.gov/ns/oscal/1.0">
+                        <control-implementation>
+                            <implemented-requirement
+                                control-id="sc-8.1"
+                                uuid="00020c7d-44b8-4dca-811c-8c94ebc6c538">
+                                <!--Cryptographic or Alternate Physical Protection-->
+                                <prop
+                                    name="control-origination"
+                                    ns="https://fedramp.gov/ns/oscal"
+                                    value="sp-system" />
+                                <prop
+                                    name="implementation-status"
+                                    ns="https://fedramp.gov/ns/oscal"
+                                    value="implemented" />
+                                <!--There are no control parameters-->
+                                <set-parameter
+                                    param-id="sc-8.1_prm_1">
+                                    <value>one-or-more of prevent unauthorized disclosure of information, detect changes to information</value>
+                                </set-parameter>
+                                <set-parameter
+                                    param-id="sc-8.1_prm_2">
+                                    <value>organization-defined alternative physical safeguards</value>
+                                </set-parameter>
+                                <responsible-role
+                                    role-id="implemented-requirement-responsible-role" />
+                                <statement statement-id="sc-8.1_smt" uuid="3f1307fa-7405-42ea-a9ad-61b7a94bc704">
+                                    <by-component component-uuid="60f92bcf-f353-4236-9803-2a5d417555f4"
+                                        uuid="8c52b949-a7ad-4bef-9da2-b342cef3dc45">
+                                        <description>
+                                            <p>Describe how the control is satisfied within the system.</p>
+                                            <p>CMVP is employed.</p>
+                                        </description>
+                                        <set-parameter param-id="sc-8.1_prm_1">
+                                            <value>[replace with list of personnel or roles]</value>
+                                        </set-parameter>
+                                        <set-parameter param-id="sc-8.1_prm_2">
+                                            <value>[specify frequency]</value>
+                                        </set-parameter>
+                                        <set-parameter param-id="sc-8.1_prm_3">
+                                            <value>[specify frequency]</value>
+                                        </set-parameter>
+                                    </by-component>
+                                </statement>
+                                <!--Required response points are: -->
+                            </implemented-requirement>
+                        </control-implementation>
+                    </system-security-plan>
+                </x:context>
+                <x:expect-assert
+                    id="missing-system-comm-terms"
+                    label="that is an error" />
+            </x:scenario>
+        </x:scenario>
     </x:scenario>
     <x:scenario
         label="FedRAMP OSCAL SSP Cloud Service and Deployment Models">

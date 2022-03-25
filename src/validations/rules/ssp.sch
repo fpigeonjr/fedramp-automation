@@ -642,11 +642,6 @@
                 test="count($results/errors/error) = 0">
                 <sch:value-of
                     select="$results => lv:report() => normalize-space()" />.</sch:report>
-            <sch:report
-                diagnostics="missing-system-comm-terms-diagnostic"
-                id="missing-system-comm-terms"
-                role="warning"
-                test="$implemented[@control-id eq 'sc-8' or @control-id eq 'sc8.1']"><xsl:value-of select="o:statement/@statment-id"/> - This is Here.</sch:report>
         </sch:rule>
         <sch:rule
             context="/o:system-security-plan/o:control-implementation/o:implemented-requirement">
@@ -682,6 +677,15 @@
                 id="invalid-implementation-status"
                 role="error"
                 test="not(exists($corrections))">[Section C Check 2] Implementation status is correct.</sch:assert>
+            <sch:assert
+                diagnostics="missing-system-comm-terms-diagnostic"
+                id="missing-system-comm-terms"
+                role="warning"
+                test="if(matches(@control-id, 'sc-8|sc-8.1|sc-13|sc-28|sc-28.1'))
+                then(if(self::o:implemented-requirement//*[matches(., 'CMVP|FIPS') and matches(lower-case(.), 'validated')])
+                then(true())
+                else(false()))
+                else(true())">Control <xsl:value-of select="@control-id"/> does not contain required text.</sch:assert>
         </sch:rule>
         <sch:rule
             context="/o:system-security-plan/o:control-implementation/o:implemented-requirement/o:statement">
@@ -3654,7 +3658,7 @@
         <sch:diagnostic
             doc:assertion="missing-system-comm-terms"
             doc:context="/o:system-security-plan/o:control-implementation"
-            id="missing-system-comm-terms-diagnostic"><xsl:value-of select="o:statement/@statement-id"/>.</sch:diagnostic>
+            id="missing-system-comm-terms-diagnostic">One or more of the following are missing from the text: 'CMVP' or 'FIPS' and 'validated'.</sch:diagnostic>
         <sch:diagnostic
             doc:assertion="extraneous-implemented-requirements"
             doc:context="/o:system-security-plan/o:control-implementation"
