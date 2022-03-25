@@ -681,11 +681,17 @@
                 diagnostics="missing-system-comm-terms-diagnostic"
                 id="missing-system-comm-terms"
                 role="warning"
-                test="if(matches(@control-id, 'sc-8|sc-8.1|sc-13|sc-28|sc-28.1'))
-                then(if(self::o:implemented-requirement//*[matches(., 'CMVP|FIPS') and matches(lower-case(.), 'validated')])
-                then(true())
-                else(false()))
-                else(true())">Control <xsl:value-of select="@control-id"/> does not contain required text.</sch:assert>
+                test="
+                    if (matches(@control-id, 'sc-8|sc-8.1|sc-13|sc-28|sc-28.1'))
+                    then
+                        (if (self::o:implemented-requirement//*[matches(., 'CMVP|FIPS') and matches(lower-case(.), 'validated')])
+                        then
+                            (true())
+                        else
+                            (false()))
+                    else
+                        (true())">Control <xsl:value-of
+                    select="@control-id" /> does not contain required text.</sch:assert>
         </sch:rule>
         <sch:rule
             context="/o:system-security-plan/o:control-implementation/o:implemented-requirement/o:statement">
@@ -3658,7 +3664,8 @@
         <sch:diagnostic
             doc:assertion="missing-system-comm-terms"
             doc:context="/o:system-security-plan/o:control-implementation"
-            id="missing-system-comm-terms-diagnostic">One or more of the following are missing from the text: 'CMVP' or 'FIPS' and 'validated'.</sch:diagnostic>
+            id="missing-system-comm-terms-diagnostic">One or more of the following are missing from the text: 'CMVP' or 'FIPS' and
+            'validated'.</sch:diagnostic>
         <sch:diagnostic
             doc:assertion="extraneous-implemented-requirements"
             doc:context="/o:system-security-plan/o:control-implementation"
@@ -3877,27 +3884,23 @@
         <sch:diagnostic
             doc:assertion="has-policy-link"
             doc:context="oscal:implemented-requirement[matches(@control-id, '^[a-z]{2}-1$')]"
-            id="has-policy-link-diagnostic">implemented-requirement 
-            <sch:value-of
+            id="has-policy-link-diagnostic">implemented-requirement <sch:value-of
                 select="@control-id" /> lacks policy reference(s) via legacy or component approach.</sch:diagnostic>
         <sch:diagnostic
             doc:assertion="has-policy-attachment-resource"
             doc:context="oscal:implemented-requirement[matches(@control-id, '^[a-z]{2}-1$')]"
-            id="has-policy-attachment-resource-diagnostic">implemented-requirement 
-            <sch:value-of
+            id="has-policy-attachment-resource-diagnostic">implemented-requirement <sch:value-of
                 select="@control-id" /> lacks policy attachment resource(s) <sch:value-of
                 select="string-join($policy-hrefs, ', ')" />.</sch:diagnostic>
         <sch:diagnostic
             doc:assertion="has-procedure-link"
             doc:context="oscal:implemented-requirement[matches(@control-id, '^[a-z]{2}-1$')]"
-            id="has-procedure-link-diagnostic">implemented-requirement 
-            <sch:value-of 
+            id="has-procedure-link-diagnostic">implemented-requirement <sch:value-of
                 select="@control-id" /> lacks procedure reference(s) via legacy or component approach.</sch:diagnostic>
         <sch:diagnostic
             doc:assertion="has-procedure-attachment-resource"
             doc:context="oscal:implemented-requirement[matches(@control-id, '^[a-z]{2}-1$')]"
-            id="has-procedure-attachment-resource-diagnostic">implemented-requirement 
-            <sch:value-of
+            id="has-procedure-attachment-resource-diagnostic">implemented-requirement <sch:value-of
                 select="@control-id" /> lacks procedure attachment resource(s) <sch:value-of
                 select="string-join($procedure-hrefs, ', ')" />.</sch:diagnostic>
         <sch:diagnostic
@@ -4462,7 +4465,8 @@
         <sch:diagnostic
             doc:assertion="party-has-one-responsibility"
             doc:context="oscal:party[@type eq 'person']"
-            id="party-has-one-responsibility-diagnostic"><xsl:value-of select="o:name"/> - This person has more than one responsibility.</sch:diagnostic>
+            id="party-has-one-responsibility-diagnostic"><xsl:value-of
+                select="o:name" /> - This person has more than one responsibility.</sch:diagnostic>
         <sch:diagnostic
             doc:assertion="implemented-requirement-has-responsible-role"
             doc:context="oscal:implemented-requirement"
