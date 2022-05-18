@@ -1,0 +1,112 @@
+
+thead tr {
+    background-color: #e0e0e0;
+    color: inherit;
+}
+
+thead th {
+    vertical-align: bottom;
+    text-align: left;
+    white-space: normal;
+}
+
+thead td {
+}
+
+tbody tr {
+    vertical-align: top;
+}
+
+tbody th {
+    text-align: left;
+    background-color: #e8e8e8;
+    color: inherit;
+}
+
+tbody tr {
+    background-color: #f0f0f0;
+    color: inherit;
+}
+tbody tr.odd-row {
+    background-color: #f0f0ff;
+    color: inherit;
+}
+
+tbody td {
+}
+
+td.centered {
+    vertical-align: middle;
+    text-align: center;
+}
+
+th.family {
+    font-size: larger;
+}
+
+.withdrawn {
+    color: grey;
+    text-decoration: line-through;
+}
+
+.renamed {
+    font-style: italic;
+}
+
+.smaller {
+    font-size: smaller;
+}
+
+.not4 {
+    background-color: orange;
+}
+
+.identifier {
+    font-family: courier, fixed, monospace;
+    font-size: smaller;
+}
+
+
+details.constraints {
+    display: inline-table;
+    vertical-align: text-top;
+}
+
+
+
+div > div.statement {
+    /*margin-left: 1em;*/
+}
+div > div.item {
+    margin-left: 1em;
+}
+div.item > div.item {
+    margin-left: 1em;
+}
+
+
+
+.novel {
+    background-color: orange;
+}
+
+.novel-ODP {
+    text-decoration: underline;
+    text-decoration-color: orange;
+}
+
+span.superscript-identifier {
+    /*font-variant: small-caps;*/
+    vertical-align: super;
+    font-family: courier, fixed, monospace;
+    font-size: xx-small;
+    hyphens: none;
+}
+
+.label,
+.select {
+    /*font-variant: small-caps;*/
+    font-style: italic;
+    background-color: powderblue;
+    /*text-decoration: underline;*/
+}
