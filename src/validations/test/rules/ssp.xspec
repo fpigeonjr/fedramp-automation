@@ -712,7 +712,7 @@
                                     uuid="4325e92d-e888-42ff-9d49-f5231129c4d3">"&gt; <statement
                                         statement-id="ac-2_stmt.a"
                                         uuid="a8419fd8-2666-4851-8191-94d054c9ef1c">"&gt; <remarks>
-                                            <p>This shouldn not be here.</p>
+                                            <p>This should not be here.</p>
                                         </remarks></statement></implemented-requirement>
                             </control-implementation>
                         </system-security-plan>
