@@ -36,14 +36,6 @@
             pattern="basic-schematron" />
         <sch:active
             pattern="punctuation" />
-    </sch:phase>
-
-    <sch:phase
-        id="advanced">
-        <sch:active
-            pattern="basic-schematron" />
-        <sch:active
-            pattern="punctuation" />
         <sch:active
             pattern="test-coverage" />
     </sch:phase>
