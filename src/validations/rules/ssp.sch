@@ -545,6 +545,7 @@
                 diagnostics="no-registry-values-diagnostic"
                 id="no-registry-values"
                 role="fatal"
+                unit:override-xspec="both"
                 test="count($registry/f:fedramp-values/f:value-set) &gt; 0">The validation technical components are present.</sch:assert>
             <sch:assert
                 diagnostics="no-security-sensitivity-level-diagnostic"
@@ -696,15 +697,19 @@
                 value="substring-before(@control-id, '-')" />
             <sch:let
                 name="leveragedUUID"
-                value="prop[@name = 'leveraged-authorization-uuid']/@value" />
+                value="oscal:prop[@name = 'leveraged-authorization-uuid']/@value" />
             <sch:assert
                 diagnostics="leveraged-PE-controls-implemented-requirement-diagnostic"
                 id="leveraged-PE-controls-implemented-requirement"
                 role="warning"
                 test="
-                    if ($leveraged/@uuid eq $leveragedUUID and $familyName eq 'pe')
+                    if ($familyName eq 'pe')
                     then
-                        false()
+                        if ($leveraged/@uuid eq $leveragedUUID)
+                        then
+                            (true())
+                        else
+                            (false())
                     else
                         true()">This PE Control has a leveraged authorization - <xsl:value-of
                     select="@control-id" />.</sch:assert>
@@ -755,30 +760,24 @@
                 doc:guide-reference="Guide to OSCAL-based FedRAMP System Security Plans §5"
                 doc:template-reference="System Security Plan Template §13"
                 id="missing-response-components"
-                role="warning"
-                test="$components-count ge $required-components-count">Response statements have sufficient components.</sch:assert>
-        </sch:rule>
-        <sch:rule
-            context="/oscal:system-security-plan/oscal:control-implementation/oscal:implemented-requirement/oscal:statement/oscal:description">
+                role="error"
+                test="exists(oscal:by-component)">Response statements have one or more components.</sch:assert>
             <sch:assert
                 diagnostics="extraneous-response-description-diagnostic"
                 doc:checklist-reference="Section D Checks"
                 doc:guide-reference="Guide to OSCAL-based FedRAMP System Security Plans §5"
                 doc:template-reference="System Security Plan Template §13"
                 id="extraneous-response-description"
-                role="warning"
-                test=". => empty()">Response statement does not have a description not within a component.</sch:assert>
-        </sch:rule>
-        <sch:rule
-            context="/oscal:system-security-plan/oscal:control-implementation/oscal:implemented-requirement/oscal:statement/oscal:remarks">
+                role="error"
+                test="not(exists(oscal:description))">Response statement has a description not within a component.</sch:assert>
             <sch:assert
                 diagnostics="extraneous-response-remarks-diagnostic"
                 doc:checklist-reference="Section D Checks"
                 doc:guide-reference="Guide to OSCAL-based FedRAMP System Security Plans §5"
                 doc:template-reference="System Security Plan Template §13"
                 id="extraneous-response-remarks"
-                role="warning"
-                test=". => empty()">Response statement does not have remarks not within a component.</sch:assert>
+                role="error"
+                test="not(exists(oscal:remarks))">Response statement does not have remarks not within a component.</sch:assert>
         </sch:rule>
         <sch:rule
             context="/oscal:system-security-plan/oscal:control-implementation/oscal:implemented-requirement/oscal:statement/oscal:by-component">
@@ -796,11 +795,15 @@
                 id="leveraged-PE-controls"
                 role="warning"
                 test="
-                    if ($leveraged/@uuid eq $component-ref and $statementID eq 'pe')
+                    if ($statementID eq 'pe')
                     then
-                        false()
+                        if ($leveraged/@uuid eq $component-ref)
+                        then
+                            true()
+                        else
+                            false()
                     else
-                        true()">This PE Control has a leveraged authorization - <xsl:value-of
+                        true()">This PE Control has a matching leveraged authorization - <xsl:value-of
                     select="../@statement-id" />.</sch:assert>
             <sch:assert
                 diagnostics="invalid-component-match-diagnostic"
@@ -1013,7 +1016,8 @@
                 doc:template-reference="System Security Plan Template §15"
                 id="rlink-href-is-available"
                 role="error"
-                test="not($use-remote-resources) or unparsed-text-available(@href)">Every supporting artifact found in a citation rlink must have a
+                test="not($use-remote-resources) or unparsed-text-available(@href)"
+                unit:override-xspec="both">Every supporting artifact found in a citation rlink must have a
                 reachable reference.</sch:assert>
             <!--<sch:assert id="rlink-has-media-type"
                 role="warning"
@@ -1507,7 +1511,8 @@
                 doc:guide-reference="Guide to OSCAL-based FedRAMP System Security Plans Appendix A"
                 id="has-accessible-CMVP-validation-details"
                 role="error"
-                test="not($use-remote-resources) or unparsed-text-available(@href)">The NIST Cryptographic Module Validation Program (CMVP)
+                test="not($use-remote-resources) or unparsed-text-available(@href)"
+                unit:override-xspec="both">The NIST Cryptographic Module Validation Program (CMVP)
                 certificate detail page is available.</sch:assert>
             <sch:assert
                 diagnostics="has-consonant-CMVP-validation-details-diagnostic"
@@ -4085,8 +4090,7 @@
             doc:assertion="extraneous-response-description"
             doc:context="/oscal:system-security-plan/oscal:control-implementation/oscal:implemented-requirement/oscal:statement/oscal:description"
             id="extraneous-response-description-diagnostic">Response statement <sch:value-of
-                select="../@statement-id" /> has a description not within a component. That was previously allowed, but not recommended. It will soon
-            be syntactically invalid and deprecated.</sch:diagnostic>
+                select="../@statement-id" /> may not have a description not within a component. This is invalid.</sch:diagnostic>
         <sch:diagnostic
             doc:assertion="extraneous-response-remarks"
             doc:context="/oscal:system-security-plan/oscal:control-implementation/oscal:implemented-requirement/oscal:statement/oscal:remarks"
@@ -4112,7 +4116,7 @@
         <sch:diagnostic
             doc:assertion="leveraged-PE-controls"
             doc:context="/oscal:system-security-plan/oscal:control-implementation/oscal:implemented-requirement/oscal:statement/oscal:by-component"
-            id="leveraged-PE-controls-diagnostic">There are PE controls inherited from leveraged authorizations.</sch:diagnostic>
+            id="leveraged-PE-controls-diagnostic">There are PE controls that do not match leveraged authorizations.</sch:diagnostic>
         <sch:diagnostic
             doc:assertion="leveraged-PE-controls-implemented-requirement"
             doc:context="/oscal:system-security-plan/oscal:control-implementation/oscal:implemented-requirement"
